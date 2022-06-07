@@ -1,4 +1,4 @@
-import React , {useEffect, useState} from "react";
+import React , {useEffect, useState ,useContext} from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import "bootstrap/dist/css/bootstrap.css";
@@ -6,7 +6,6 @@ import { Link } from "react-router-dom";
 import { Navigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
- 
 const LoginSchema = Yup.object().shape({
 email: Yup.string()
 	.email("Invalid email address format")
@@ -16,17 +15,11 @@ password: Yup.string()
 	.required("Password is required"),
 });
 
-const  Login = ()=> {
-
+const  Login = (props)=> {
+	
 const [loginDetails , setLoginDetails] = useState({});
 const [notification , setNotification]  = useState(false)
 
-// check user logged in or not 
-const user_session = JSON.parse(localStorage.getItem('user_session'))
-if(user_session!=null)
-{
-	return <Navigate to="dashboard" />
-}
 if(notification==true){
 	const users =  JSON.parse(localStorage.getItem('Users'))|| []
 	var results = users.filter(function (entry) { return entry.email === loginDetails.email && entry.password==loginDetails.password });
@@ -36,7 +29,12 @@ if (results.length === 0 ) {
 	notify()
 }else{
     localStorage.setItem('user_session', JSON.stringify(loginDetails.email));
-    return  <Navigate to='/dashboard'  />
+    localStorage.setItem('auth', JSON.stringify(true));
+	props.setAuth(JSON.parse(localStorage.getItem('auth')))
+    if(props.auth==true){
+		return  <Navigate to='/dashboard'  />
+    }
+	
 }
  
 }
