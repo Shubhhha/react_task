@@ -9,13 +9,13 @@ import {
 	Route,
   } from "react-router-dom";
 import PublicRoute from "./PublicRoute";
-
+import { ThemeContext } from "./context/themeContext";
 
 const App=()=>{
+  const { toggle , auth , setAuth } = React.useContext(ThemeContext);
 const authenticate =  JSON.parse(localStorage.getItem('auth'))|| false
-const [auth,  setAuth] = useState(authenticate)
 	return(
-		<div> 
+		<div className={toggle ? "bg-dark" : "bg-light"}> 
 		
 	<Routes>
       <Route path="register" element={<Register />} />

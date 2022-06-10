@@ -6,6 +6,8 @@ import { Link } from "react-router-dom";
 import { Navigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { ThemeContext } from "../context/themeContext";
+
 const LoginSchema = Yup.object().shape({
 email: Yup.string()
 	.email("Invalid email address format")
@@ -16,9 +18,11 @@ password: Yup.string()
 });
 
 const  Login = (props)=> {
-	
+const { toggle, setToggle , auth , setAuth} =useContext(ThemeContext);
 const [loginDetails , setLoginDetails] = useState({});
 const [notification , setNotification]  = useState(false)
+const [theme , setTheme]  = useState(false)
+
 
 if(notification==true){
 	const users =  JSON.parse(localStorage.getItem('Users'))|| []
@@ -28,13 +32,12 @@ if(notification==true){
 if (results.length === 0 ) {
 	notify()
 }else{
+	setToggle(!toggle);
+
     localStorage.setItem('user_session', JSON.stringify(loginDetails.email));
     localStorage.setItem('auth', JSON.stringify(true));
-	props.setAuth(JSON.parse(localStorage.getItem('auth')))
-    if(props.auth==true){
-		return  <Navigate to='/dashboard'  />
-    }
-	
+	// props.setAuth(JSON.parse(localStorage.getItem('auth')))
+	setAuth(!auth)
 }
  
 }
@@ -51,6 +54,7 @@ if (results.length === 0 ) {
 			onSubmit={(values) => {
                 setLoginDetails(values);
 				setNotification(!notification)
+
 			}}
 			>
 			{({ touched, errors, isSubmitting, values }) =>
@@ -111,6 +115,7 @@ if (results.length === 0 ) {
 					>
 						Submit
 					</button>
+					<button onClick={()=>setToggle(!toggle)}>color</button>
 					  </div>
 					  <div className="col-md-6 mt-4" >
                           <Link to="/register"> Create an account?</Link>
