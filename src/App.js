@@ -1,5 +1,5 @@
 import Register from "./components/Register";
-import Login from "./components/Login";
+import Index from "./pages/Login";
 import Dashboard from "./components/Dashboard";
 import Notfound from "./components/Notfound";
 import { ProtectedRoute } from "./ProtectedRoute";
@@ -36,7 +36,7 @@ const App = () => {
           path="/"
           element={
             <PublicRoute auth={auth}>
-              <Login />
+              <Index />
             </PublicRoute>
           }
         />
