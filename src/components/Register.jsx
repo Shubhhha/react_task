@@ -1,11 +1,10 @@
 import React , {useState} from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import "bootstrap/dist/css/bootstrap.css";
 import { Link } from "react-router-dom";
 import { Navigate } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+
  
 
 const LoginSchema = Yup.object().shape({

@@ -1,14 +1,16 @@
-import React, { useEffect, useState, useContext  ,Fragment} from "react";
+import React, { useEffect, useState, useContext, Fragment } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import { Container, Row, Col ,Alert } from "react-bootstrap";
+import { Container, Row, Col, Alert, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { Navigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import '../../App.css' ;
 // import { AuthContext } from "../context/authContext";
 import { AuthContext } from "../../context/authContext";
 // import { userLogin, login_schema } from "../services/usersService";
-import { userLogin, login_schema } from '../../services/usersService';
-
+import { userLogin, login_schema } from "../../services/usersService";
+var imglogo = require("../../images/5087579.png");
+var sideimg = require("../../images/loginimg.jpg");
 const Index = (props) => {
   const { auth, saveLogin } = useContext(AuthContext);
   const [loginDetails, setLoginDetails] = useState({
@@ -51,9 +53,13 @@ const Index = (props) => {
 
   console.log(loginDetails, 666);
   return (
-    <Container>
+    <Container className="mt-5">
       <Row>
-        <Col md={8}>
+        <Col lg={5} md={7} sm={12} className=" ">
+          <Row className="justify-content-md-center">
+          <img src={imglogo} className="icon-img " alt="avatar"></img>
+
+          </Row>
           <Formik
             initialValues={loginDetails}
             validationSchema={login_schema()}
@@ -63,15 +69,8 @@ const Index = (props) => {
           >
             {({ touched, errors, isSubmitting, values }) => (
               <Fragment>
-              
-                <Row>
-                    <Col md={12} className="text-center">
-                    <h1 className="mt-5">Login Form</h1>
-                    </Col>
-                </Row>
                 <Form>
-                  <div className="form-group">
-                    <label htmlFor="email">Email</label>
+                  <div className="form-group mb-3">
                     <Field
                       type="email"
                       name="email"
@@ -84,14 +83,11 @@ const Index = (props) => {
                     <ErrorMessage
                       component="div"
                       name="email"
-                      className="invalid-feedback"
+                      className="invalid-feedback "
                     />
                   </div>
 
-                  <div className="form-group">
-                    <label htmlFor="password" className="mt-3">
-                      Password
-                    </label>
+                  <div className="form-group mb-3">
                     <Field
                       type="password"
                       name="password"
@@ -106,25 +102,22 @@ const Index = (props) => {
                     />
                   </div>
 
-                  <div className="row">
-                    <div className="col-md-6">
-                      <button
-                        type="submit"
-                        className="btn btn-primary btn-block mt-4"
-                      >
-                        Submit
-                      </button>
-                    </div>
-                    <div className="col-md-6 mt-4">
-                      <Link to="/register"> Create an account?</Link>
-                    </div>
+                  <div className="d-grid ">
+                    <Button variant="primary" size="lg" type="submit">
+                      Login
+                    </Button>
+                  </div>
+                  <div className="col-md-6 mt-4">
+                    <Link to="/register"> Create an account?</Link>
                   </div>
                 </Form>
-                </Fragment>
+              </Fragment>
             )}
           </Formik>
         </Col>
-        <Col md={4}>Lll</Col>
+        <Col lg={7} md={5} sm={12}>
+          <img src={sideimg} className="side-img" alt="avatar"></img>
+        </Col>
       </Row>
     </Container>
   );

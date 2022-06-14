@@ -29,7 +29,7 @@ function Header() {
             ) : (
               <Fragment>
                 <Nav.Link as={Link} to="/">Login</Nav.Link>
-                <Nav.Link as={Link} to="/register">Register</Nav.Link>
+                <Nav.Link as={Link} to="/Signup">Signup</Nav.Link>
               </Fragment>
             )}
             <Button variant="outline-dark" onClick={() => setToggle(!toggle)}>

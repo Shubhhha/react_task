@@ -36,3 +36,21 @@
     transform: rotate(360deg);
   }
 }
+
+
+.icon-img{
+
+  height: 120px;
+  width: 120px;
+  margin-bottom: 1rem;
+}
+.btn-primary {
+  color: #fff;
+  background-color: #813afe;
+  border-color: #813afe;
+}
+
+.side-img{
+height: 100%;
+    width: 100%;;
+}

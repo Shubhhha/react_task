@@ -12,16 +12,17 @@ import Header from "./components/Header";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import "bootstrap/dist/css/bootstrap.css";
+import Signup from "./pages/signup/Signup";
 
 const App = () => {
   const { toggle } = React.useContext(ThemeContext);
   const { auth } = React.useContext(AuthContext);
   console.log(auth, "Amy Auth Context");
   return (
-    <div className={toggle ? "bg-dark" : "bg-light"}>
+    <div  className={toggle ? "bg-dark" : "bg-light" }>
       <Header></Header>
       <Routes>
-        <Route path="register" element={<Register />} />
+        <Route path="signup" element={<Signup />} />
         <Route path="*" element={<Notfound />} />
 
         <Route
@@ -40,7 +41,9 @@ const App = () => {
             </PublicRoute>
           }
         />
+       
       </Routes>
+      
       <ToastContainer/>
     </div>
   );
