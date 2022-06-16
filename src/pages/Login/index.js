@@ -10,7 +10,7 @@ import { AuthContext } from "../../context/authContext";
 // import { userLogin, login_schema } from "../services/usersService";
 import { userLogin, login_schema } from "../../services/usersService";
 var imglogo = require("../../images/5087579.png");
-var sideimg = require("../../images/loginimg.jpg");
+var sideimg = require("../../images/loginimg.png");
 const Index = (props) => {
   const { auth, saveLogin } = useContext(AuthContext);
   const [loginDetails, setLoginDetails] = useState({
@@ -53,12 +53,11 @@ const Index = (props) => {
 
   console.log(loginDetails, 666);
   return (
-    <Container className="mt-5">
+    <Container className="mt-5" style={{height:"100vh"}}>
       <Row>
         <Col lg={5} md={7} sm={12} className=" ">
           <Row className="justify-content-md-center">
-          <img src={imglogo} className="icon-img " alt="avatar"></img>
-
+          <img src={imglogo} className="  mx-auto  w-50 h-50" alt="avatar"></img>
           </Row>
           <Formik
             initialValues={loginDetails}
@@ -108,7 +107,7 @@ const Index = (props) => {
                     </Button>
                   </div>
                   <div className="col-md-6 mt-4">
-                    <Link to="/register"> Create an account?</Link>
+                    <Link to="/signup"> Create an account?</Link>
                   </div>
                 </Form>
               </Fragment>
@@ -116,7 +115,7 @@ const Index = (props) => {
           </Formik>
         </Col>
         <Col lg={7} md={5} sm={12}>
-          <img src={sideimg} className="side-img" alt="avatar"></img>
+          <img src={sideimg} className="side-img " alt="avatar"></img>
         </Col>
       </Row>
     </Container>

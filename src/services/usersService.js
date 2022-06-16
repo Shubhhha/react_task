@@ -27,3 +27,33 @@ export const  login_schema = ()=>{
 
       return LoginSchema ;
 }
+
+
+
+// For user sign up form 
+ export const validate  =(values)=>{
+    const errors={};
+    const regex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+    if(!values.name){
+     errors.name = "Name is required";
+    }
+    if(!values.email){
+      errors.email = "Email is required";
+     }
+     if(!values.email){
+      errors.email = "Email is required";
+     }else if(!regex.test(values.email)){
+      errors.email = "Email is invalid";
+     }
+     if(!values.password){
+      errors.password = "Password is required";
+     }
+     if(!values.confirmPassword){
+      errors.confirmPassword = "Confirm Password is required";
+     }
+     if(values.password!=values.confirmPassword){
+      errors.confirmPassword = "Password or Confirm Password is not matched";
+  
+     }
+     return errors ;
+   }

@@ -14,17 +14,20 @@ import 'react-toastify/dist/ReactToastify.css';
 import "bootstrap/dist/css/bootstrap.css";
 import Signup from "./pages/signup/Signup";
 
+
 const App = () => {
   const { toggle } = React.useContext(ThemeContext);
   const { auth } = React.useContext(AuthContext);
   console.log(auth, "Amy Auth Context");
   return (
-    <div  className={toggle ? "bg-dark" : "bg-light" }>
+    <div   className={toggle ? "bg-dark" : "bg-light" }>
       <Header></Header>
       <Routes>
-        <Route path="signup" element={<Signup />} />
+        <Route path="signup" element={
+          <PublicRoute auth={auth} ><Signup /></PublicRoute>
+        } />
         <Route path="*" element={<Notfound />} />
-
+        
         <Route
           path="dashboard"
           element={
