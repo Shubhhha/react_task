@@ -1,6 +1,5 @@
-import Register from "./components/Register";
 import Index from "./pages/Login";
-import Dashboard from "./components/Dashboard";
+import Dashboard from "./pages/Dashboard/Dashboard";
 import Notfound from "./components/Notfound";
 import { ProtectedRoute } from "./ProtectedRoute";
 import React  from "react";

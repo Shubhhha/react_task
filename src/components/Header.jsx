@@ -22,7 +22,16 @@ function Header() {
             {auth ? (
               <Fragment>
                 <Navbar.Text>Signed in as: {auth.name}</Navbar.Text>
-                <Button variant="outline-success" onClick={(e) => logout()}>
+                <Button variant="outline-success" 
+                 onClick={() => {
+                  const confirmBox = window.confirm(
+                    "Do you really want to delete this Crumb?"
+                  )
+                  if (confirmBox === true) {
+                    logout()
+                  }
+                }}
+                >
                   Logout
                 </Button>
               </Fragment>
@@ -41,5 +50,7 @@ function Header() {
     </Fragment>
   );
 }
+
+
 
 export default Header;

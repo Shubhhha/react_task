@@ -22,13 +22,13 @@ const AuthProvider = ({ children }) => {
 
   const saveLogin=(login)=>{
     localStorage.setItem("user_session", JSON.stringify(login));
-    localStorage.setItem("auth", JSON.stringify(true));
+    // localStorage.setItem("auth", JSON.stringify(true));
     setAuth(login)
   }
 
   const logout=()=>{
     localStorage.setItem("user_session", null);
-    localStorage.setItem("auth", false);
+    // localStorage.setItem("auth", false);
     setAuth(false)
   }
   
